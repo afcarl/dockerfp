@@ -14,6 +14,9 @@
                 font-weight: bold;
                 margin: 0.5em 0;
             }
+            .notice {
+                font-style: italic;
+            }
         
         </style>        
     
@@ -22,6 +25,7 @@
         <div class="container">
         <h1 class="top-header">Running instances</h1>
         <ul class="list-group">
+            {%if instances %}
             {% for instance in instances %}
             <a href="/" onclick="javascript:location.port={{instance.port}};return false"
             class="list-group-item list-group-item-action">
@@ -29,7 +33,15 @@
                 <p class="instance-info">Created on {{instance.created}}</p>
             </a>
             {%endfor%}
+            {%else%}
+            <div class="alert alert-danger" role="alert">
+                    No instances running currently. Check pipelines in Gitlab.
+                  </div>
+            {%endif%}
+
         </ul>
+        <p class="notice">Instances will be deleted automatically after {{cleanup_days}} days</p>
+
         </div>
 
 

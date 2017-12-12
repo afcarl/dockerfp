@@ -20,6 +20,6 @@ def hello_world():
     client = docker.APIClient(base_url=app.config['DOCKER_SOCKET'])
     instances = map(map_cont,client.containers())
     instances = filter(lambda c: c['port'] and re.match(app.config['CONTAINER_RE'], c['name']), instances)
-    return render_template("main.html", instances=instances )
+    return render_template("main.html", instances=instances, cleanup_days=app.config['DEFAULT_CLEANUP_DAYS'])
 
 
