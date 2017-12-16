@@ -5,7 +5,9 @@ How to use
 ----------
 
 * Edit settings.py 
+* install dependencies `pip install -r requiremets.txt`
 * Deploy app in WSGI server (application must have access to Docker Engine socket)
+* Add cron script (for user with access to Docker Engine) running cleanup.py script
 
 Deployment with nginx and uwsgi
 -------------------------------
